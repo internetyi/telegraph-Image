@@ -26,7 +26,7 @@ export async function POST(request) {
 
 	const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || request.socket.remoteAddress;
 	const clientIp = ip ? ip.split(',')[0].trim() : 'IP not found';
-	const Referer = request.headers.get('origin') || "Referer";
+	const Referer = request.headers.get('Origin') || "Referer";
 
 	const formData = await request.formData();
 	const fileType = formData.get('file').type;
