@@ -67,7 +67,7 @@ export async function POST(request) {
 		const fileData = await getFile(responseData);
 
 		const data = {
-			"url": `${req_url.origin}/api/cfile/${fileData.file_id}`,
+			"url": `${request.headers.get("origin")}/api/cfile/${fileData.file_id}`,
 			"code": 200,
 			"name": fileData.file_name
 		}
