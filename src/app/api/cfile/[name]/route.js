@@ -144,7 +144,7 @@ export async function GET(request, { params }) {
       } else {
         return Response.json({
           status: 500,
-          message: `HTTP error! status: ${res.status}`,
+          message: `getImgData HTTP error! status: ${res.status}`,
           success: false
         }
           , {
@@ -186,7 +186,7 @@ async function getFile_path(env, file_id) {
       const file_path = responseData.result.file_path
       return file_path
     } else {
-      throw new Error(`HTTP error! status: ${responseData.status}`);
+      throw new Error(`getFile_path HTTP error! status: ${responseData.status}`);
     }
 
 
