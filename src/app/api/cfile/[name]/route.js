@@ -186,7 +186,7 @@ async function getFile_path(env, file_id) {
       const file_path = responseData.result.file_path
       return file_path
     } else {
-      throw new Error(`getFile_path HTTP error! status: ${responseData.status}`);
+      throw new Error(`getFile_path HTTP error! status: ${responseData.status} responseData：JSON.stringify(responseData)`);
     }
 
 
