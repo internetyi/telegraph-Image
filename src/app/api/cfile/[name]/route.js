@@ -144,7 +144,7 @@ export async function GET(request, { params }) {
       } else {
         return Response.json({
           status: 500,
-          message: ` ${error.message}`,
+          message: `HTTP error! status: ${res.status}`,
           success: false
         }
           , {
@@ -172,7 +172,6 @@ export async function GET(request, { params }) {
 
 
 async function getFile_path(env, file_id) {
-  try {
     const url = `https://api.telegram.org/bot${env.TG_BOT_TOKEN}/getFile?file_id=${file_id}`;
     const res = await fetch(url, {
       method: 'GET',
@@ -187,12 +186,8 @@ async function getFile_path(env, file_id) {
       const file_path = responseData.result.file_path
       return file_path
     } else {
-      return "error";
+      throw new Error(`HTTP error! status: ${responseData.status}`);
     }
-  } catch (error) {
-    return "error";
-
-  }
 
 
 }
